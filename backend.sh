@@ -10,7 +10,7 @@ cd /app
 unzip /tmp/backend.zip
 npm install
 dnf install mysql -y
-mysql -h 172.31.45.171 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h mysql-dev.akrdevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
 systemctl daemon-reload
 systemctl enable backend
 systemctl restart backend
