@@ -1,8 +1,17 @@
-dnf install nginx -y
-cp expense.conf /etc/nginx/default.d/expense.conf
-rm -rf /usr/share/nginx/html/*
-curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/frontend.zip
-cd /usr/share/nginx/html
-unzip /tmp/frontend.zip
-systemctl enable nginx
-systemctl restart nginx
+component="frontend"
+souce common.sh
+
+print_head "Install Nginx"
+dnf install nginx -y &>>${log_file}
+func_stat_check $?
+
+print_head "Copy Expense Conf"
+cp expense.conf /etc/nginx/default.d/expense.conf &>>${log_file}
+func_stat_check $?
+
+func_app_prereq "/usr/share/nginx/html"
+
+print_head "Start Nginx Service"
+systemctl enable nginx &>>${log_file}
+systemctl restart nginx &>>${log_file}
+func_stat_check $?
