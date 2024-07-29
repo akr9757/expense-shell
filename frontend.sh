@@ -1,5 +1,5 @@
 component="frontend"
-souce common.sh
+source common.sh
 
 print_head "Install Nginx"
 dnf install nginx -y &>>${log_file}
