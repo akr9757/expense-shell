@@ -27,7 +27,7 @@ func_app_prereq() {
   curl -o /tmp/${component}.zip https://expense-artifacts.s3.amazonaws.com/${component}.zip &>>${log_file}
   func_stat_check $?
 
-  print_head "Unzip App Content"
+  print_head Unzip App Content"
   cd $1 &>>${log_file}
   unzip /tmp/${component}.zip &>>${log_file}
   func_stat_check $?
