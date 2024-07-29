@@ -24,7 +24,11 @@ cp ${component}.service /etc/systemd/system/${component}.service &>>${log_file}
 func_stat_check $?
 
 print_head "Add Application User"
-useradd ${user_name} &>>${log_file}
+id expense $? &>>${log_file}
+if [ "$?" -ne 0 ]; then
+  useradd ${user_name} &>>${log_file}
+fi
+
 func_stat_check $?
 
 func_app_prereq "/app"
