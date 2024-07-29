@@ -15,7 +15,7 @@ print_head "Enable Newer Version"
 dnf module enable nodejs:18 -y &>>${log_file}
 func_stat_check $?
 
-print_head "Install Node"
+print_head "Install Nodejs"
 dnf install nodejs -y &>>${log_file}
 func_stat_check $?
 
