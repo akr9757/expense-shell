@@ -1,5 +1,10 @@
 source common.sh
 
+if [ -z "${mysql_root_password}" ]; then
+  echo mysql root password is missing
+  exit 1
+fi
+
 print_head "Disable Mysql Older Version"
 dnf module disable mysql -y &>>${log_file}
 func_stat_check $?
