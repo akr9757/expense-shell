@@ -1,0 +1,4 @@
+import {
+  to = aws_security_group.expense_sg
+  id = "sg-06d14744e7a12dcaf"
+}
